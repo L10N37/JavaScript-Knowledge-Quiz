@@ -1,5 +1,6 @@
 //////////// Globals //////////////
 timeStart = 70;
+index = 0;
 //////////////////////////////////
 
 // Insert Intro Screen
@@ -45,21 +46,18 @@ function timerDisplay(){
 
 }
 
-generateAnswers(){
-    questions.answer1  + questions.q10fill1;
-}
-
 function startQuiz(){
     // Create/ Display questions until answered
     let questionVar= document.createElement("div");
     questionVar.className= "questionsClass";
     questionVar.id="questionsID";
     document.body.appendChild(questionVar);
-    questionVar.innerHTML = questions.question1;
+    questionVar.innerHTML = questions[index].question;
+    //console.log(questions[index].question)
     // Generate Answers
     let answersVar= document.createElement("div");
     answersVar.className= "answersClass";
     answersVar.id="answersID";
     document.body.appendChild(answersVar);
-    answersVar.innerHTML = generateAnswers();
+    
 }
