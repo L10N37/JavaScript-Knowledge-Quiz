@@ -1,6 +1,7 @@
 //////////// Global Area (on load) //////////////
 let timeStart = 70;
 let index = 0;
+let questionsAnsweredCounter = 0;
 // Insert Intro Screen
 let introScreen= document.createElement("div");
 introScreen.className= "intro"
@@ -8,7 +9,7 @@ introScreen.id="temp";
 document.body.appendChild(introScreen);
 introScreen.innerHTML = "Try to answer the following questions about JavaScript \
 programming within the time limit. There are 10 questions. \
-If you can answer within an average of 7 seconds a question, \
+If you can answer correctly within an average of 7 seconds a question, \
 you will make it through!"
 // Highlighted text in Intro Screen (separate style)
 let introScreenAlt= document.createElement("div");
@@ -33,12 +34,20 @@ function clearScreen(){
     remove.parentNode.removeChild(remove);
 }
 
+function score(correctAnswerPoints, timeLeftPoints) {
+    console.log(correctAnswerPoints,timeLeftPoints)
+}
+
 function timerDisplay(){
     // Times up stuff
     if (timeStart<=0){
+    // Clear interval timer stuff
+    const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
+    for (let i = 1; i < interval_id; i++) {
+    window.clearInterval(i);
+  }     // times up alert and pass score attributes to score function
         alert("Time's up!");
-        location.reload();
-        return;
+        score(questionsAnsweredCounter, timeStart);
         }
     // Remove last timeupdate if exists
     let timerHasStarted = document.getElementById("timerID");
@@ -71,7 +80,6 @@ function startQuiz(){
         // so we can't generate the same answer multiple times
         questions[index].answers.splice(randomIndex, 1);
         AnswersJumbled[i] =  randomAnswer1to4[i];
-        console.log(AnswersJumbled[i]);
     }
     // Generate Answers
     // parent used for click event listener
@@ -79,6 +87,7 @@ function startQuiz(){
     answersVarParent.className= "listenTarget";
     answersVarParent.id="createDestroy"
     document.body.appendChild(answersVarParent);
+    // children
     //1
     let answersVar0= document.createElement("div");
     answersVar0.className= "answersClass";
@@ -101,17 +110,23 @@ function startQuiz(){
     answersVarParent.appendChild(answersVar3);
     // Inner HTML generated randomly above, this section adjusts the ID of the div containing
     // the correct answer, to an ID used to ID the correct answer with the click event.
-    if (AnswersJumbled[0] == questions[index].correctAnswer) answersVar0.id="correctAnswerID"
     answersVar0.innerHTML = AnswersJumbled[0];
-    if (AnswersJumbled[1] == questions[index].correctAnswer) answersVar1.id="correctAnswerID"
     answersVar1.innerHTML = AnswersJumbled[1];
-    if (AnswersJumbled[2] == questions[index].correctAnswer) answersVar2.id="correctAnswerID"
     answersVar2.innerHTML = AnswersJumbled[2];
-    if (AnswersJumbled[3] == questions[index].correctAnswer) answersVar3.id="correctAnswerID"
     answersVar3.innerHTML = AnswersJumbled[3];
 
-
-      
+    if (AnswersJumbled[0] == questions[index].correctAnswer) {
+    answersVar0.id="correctAnswerID";
+    }
+    else if (AnswersJumbled[1] == questions[index].correctAnswer) {
+    answersVar1.id="correctAnswerID";
+    }
+    else if (AnswersJumbled[2] == questions[index].correctAnswer) {
+    answersVar2.id="correctAnswerID";
+    }
+    else if (AnswersJumbled[3] == questions[index].correctAnswer) {
+    answersVar3.id="correctAnswerID";
+    }
         // Add our click event listener for clickable answers
         let clickableAnswers = document.querySelector(".listenTarget");
 
@@ -119,16 +134,20 @@ function startQuiz(){
         let element = event.target;
             // Check if the clicked element was the correct answer
             if (element.matches("#correctAnswerID")) {
-                alert("fffyeah!");
+                questionsAnsweredCounter++;
+                if (questionsAnsweredCounter==10){
+                    alert("You answered all the questions correctly!");
+                    score(questionsAnsweredCounter, timeStart);
+                }
                 index++;
                 // Clear Screen for next round
                 clearScreen();
+                console.log(questionsAnsweredCounter);
                 startQuiz();
                 return;
             }
             // Check if the clicked element was the correct answer
             else {
-                alert("fffno!");
                 timeStart=timeStart-10;
             }
         }

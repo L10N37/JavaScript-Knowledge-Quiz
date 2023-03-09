@@ -42,17 +42,18 @@ font-style: italic;
 }
 
 .questionsClass{
+    border-bottom: solid white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:white;
     font-size: 32px;
-    padding-bottom: 10%;
+    padding-bottom: 2px;
 }
 
 .answersClass{
     padding: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:pink;
-    font-size: 24px;
+    font-size: 16px;
     text-align: center;
 }
 

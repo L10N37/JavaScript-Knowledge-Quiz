@@ -51,5 +51,5 @@ let questions= [
   {
     question: "How to write an IF statement for executing some code if \"i\" is NOT equal to 5?\"",
     answers:  ["if (i != 5)","if i =! 5 then","if i &lt&gt 5","if (i &lt&gt 5)"],
-    CorrectAnswer:  "if (i != 5)"
+    correctAnswer: "if (i != 5)"
   } ]
