@@ -21,7 +21,7 @@ introScreenAlt.innerHTML = "\ You will be penalised 10 seconds for an incorrect 
 
 function removeIntro(){
     // delete unecessary elements
-    let deleteIntro = document.getElementById('temp', 'imReady');
+    let deleteIntro = document.getElementById('temp');
     deleteIntro.parentNode.removeChild(deleteIntro);
     deleteIntro = document.getElementById('imReady');
     deleteIntro.parentNode.removeChild(deleteIntro);
@@ -59,6 +59,34 @@ function timerDisplay(){
     document.body.appendChild(timerElement);
     timerElement.innerHTML = timeStart;
     timeStart--;
+}
+
+function removeCorrectText(){
+    let remove = document.getElementById("correctText");
+    if (remove){
+    remove.parentNode.removeChild(remove);
+    }
+}
+
+function removeIncorrectText(){
+    let remove = document.getElementById("incorrectText");
+    if (remove){
+    remove.parentNode.removeChild(remove);
+    }
+}
+
+function showIncorrectText(){
+    let incorrectText= document.createElement("div");
+    incorrectText.id="incorrectText";
+    document.body.appendChild(incorrectText);
+    incorrectText.innerHTML = "Wrong";
+}
+
+function showCorrectText(){
+    let correctText= document.createElement("div");
+    correctText.id="correctText";
+    document.body.appendChild(correctText);
+    correctText.innerHTML = "Correct!"
 }
 
 function startQuiz(){
@@ -133,8 +161,11 @@ function startQuiz(){
         clickableAnswers.addEventListener("click", function(event) {
         let element = event.target;
             // Check if the clicked element was the correct answer
+            removeCorrectText();
+            removeIncorrectText();
             if (element.matches("#correctAnswerID")) {
                 questionsAnsweredCounter++;
+                showCorrectText();
                 if (questionsAnsweredCounter==10){
                     alert("You answered all the questions correctly!");
                     score(questionsAnsweredCounter, timeStart);
@@ -149,6 +180,7 @@ function startQuiz(){
             // Check if the clicked element was the correct answer
             else {
                 timeStart=timeStart-10;
+                showIncorrectText();
             }
         }
         )
