@@ -1,0 +1,22 @@
+body{
+    background-color: black;
+}
+.intro{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32px;
+    color: white;
+    text-align:center;
+    border: solid yellow;
+}
+
+.button{
+    color:red;
+    box-sizing:border-box;
+    
+}
+
+.highLight{
+color:rgb(219, 8, 194);
+font-weight: bolder;
+font-style: italic;
+}

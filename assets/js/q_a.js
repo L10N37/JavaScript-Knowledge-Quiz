@@ -15,7 +15,7 @@ let questions= {
     q2fill3:    "document.getElement(\"p\").innerHTML = \"Hello World!\";",
 
     question3:  "Where is the correct place to insert a JavaScript?",
-    answer3:    "Both the <head> section and the <body> section are correct",\
+    answer3:    "Both the <head> section and the <body> section are correct",
     q3fill1:    "The <body> section",
     q3fill2:    "The <head> section",
     q3fill3:    "The <epic> section",
