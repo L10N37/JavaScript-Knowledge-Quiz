@@ -64,7 +64,7 @@ function startQuiz(){
     let randomAnswer1to4 =[];
     for (let i= 0; i < 4; i++) {
         const randomIndex = Math.floor(Math.random() * questions[index].answers.length);
-       randomAnswer1to4[i] = questions[index].answers[randomIndex];
+        randomAnswer1to4[i] = questions[index].answers[randomIndex];
         // remove the answer from array, method sets new array length, 
         // so we can't generate the same answer multiple times
         questions[index].answers.splice(randomIndex, 1);
