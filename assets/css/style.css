@@ -49,9 +49,14 @@ font-style: italic;
 }
 
 #answersID{
-    padding: 5%;
+    padding: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:pink;
     font-size: 24px;
-    text-align: left;
+    text-align: center;
+}
+
+.answersClass:hover{
+    font-weight: bolder;
+    border: dotted;
 }

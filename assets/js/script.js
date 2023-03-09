@@ -1,5 +1,5 @@
 //////////// Globals //////////////
-timeStart = 70;
+timeStart = 10;
 index = 0;
 //////////////////////////////////
 
@@ -29,9 +29,10 @@ function removeIntro(){
 
 function timerDisplay(){
     // Times up stuff
-    if (timeStart==0 || timeStart<0){
+    if (timeStart<=0){
         alert("Time's up!");
         location.reload();
+        return;
         }
     // Remove last timeupdate if exists
     let timerHasStarted = document.getElementById("timerID");
@@ -55,26 +56,30 @@ function startQuiz(){
     // display question array of objects question # as per index value
     questionVar.innerHTML = questions[index].question;
     // Generate Answers
+    // parent used for click event listener
+    let answersVarParent= document.createElement("div");
+    answersVarParent.className= "listenTarget";
+    document.body.appendChild(answersVarParent);
     //1
     let answersVar0= document.createElement("div");
     answersVar0.className= "answersClass";
     answersVar0.id="answersID";
-    document.body.appendChild(answersVar0);
+    answersVarParent.appendChild(answersVar0);
     //2
     let answersVar1= document.createElement("div");
     answersVar1.className= "answersClass";
     answersVar1.id="answersID";
-    document.body.appendChild(answersVar1);
+    answersVarParent.appendChild(answersVar1);
     //3
     let answersVar2= document.createElement("div");
     answersVar2.className= "answersClass";
     answersVar2.id="answersID";
-    document.body.appendChild(answersVar2);
+    answersVarParent.appendChild(answersVar2);
     //4
     let answersVar3= document.createElement("div");
     answersVar3.className= "answersClass";
     answersVar3.id="answersID";
-    document.body.appendChild(answersVar3);
+    answersVarParent.appendChild(answersVar3);
     // pluck answers from object array, as per current question index value
     // and display in random order each quiz through
     let randomAnswer1to4 =[];
@@ -88,12 +93,29 @@ function startQuiz(){
         AnswersJumbled[i] =  randomAnswer1to4[i];
         console.log(AnswersJumbled[i]);
     }
-    //AnswersJumbled = AnswersJumbled.join('');
     answersVar0.innerHTML = AnswersJumbled[0];
     answersVar1.innerHTML = AnswersJumbled[1];
     answersVar2.innerHTML = AnswersJumbled[2];
     answersVar3.innerHTML = AnswersJumbled[3];
 
+        // Add our click event listener for clickable answers
+        let clickableAnswers = document.querySelector(".listenTarget");
+
+        clickableAnswers.addEventListener("click", function(event) {
+        let element = event.target;
+            // Check if the clicked element was the correct answer
+            if (element.matches(".answersClass")) {
+                alert("fffyeah");
+            }
+        }
+        )
+
+
+
+
+
+
+    
  //  console.log(randomAnswer1to4) //test logger
        
 }
