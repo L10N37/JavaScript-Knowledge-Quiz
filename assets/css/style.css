@@ -48,7 +48,7 @@ font-style: italic;
     padding-bottom: 10%;
 }
 
-#answersID{
+.answersClass{
     padding: 2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:pink;

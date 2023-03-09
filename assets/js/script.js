@@ -63,7 +63,7 @@ function startQuiz(){
     //1
     let answersVar0= document.createElement("div");
     answersVar0.className= "answersClass";
-    answersVar0.id="answersID";
+    answersVar0.id="correctAnswerID";
     answersVarParent.appendChild(answersVar0);
     //2
     let answersVar1= document.createElement("div");
@@ -104,8 +104,12 @@ function startQuiz(){
         clickableAnswers.addEventListener("click", function(event) {
         let element = event.target;
             // Check if the clicked element was the correct answer
-            if (element.matches(".answersClass")) {
+            if (element.matches("#correctAnswerID")) {
                 alert("fffyeah");
+            }
+            // Check if the clicked element was the correct answer
+            if (element.matches("#answersID")) {
+                alert("fffno!");
             }
         }
         )
