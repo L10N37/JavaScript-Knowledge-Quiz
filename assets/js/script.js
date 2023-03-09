@@ -1,6 +1,6 @@
 //////////// Globals //////////////
 timeStart = 70;
-setInterval(timer, 1000);
+setInterval(timerDisplay, 1000);
 //////////////////////////////////
 
 // Insert Intro Screen
@@ -25,22 +25,22 @@ function removeIntro(){
     deleteIntro.parentNode.removeChild(deleteIntro);
     deleteIntro = document.getElementById('imReady');
     deleteIntro.parentNode.removeChild(deleteIntro);
-    // create a timer element while we're here?
-    
 }
 
-function timer(){
+function timerDisplay(){
+    // Remove last timeupdate if exists
+    let timerHasStarted = document.getElementById("timerID");
+    if (timerHasStarted) timerHasStarted.parentNode.removeChild(timerHasStarted);
     // Create Timer
     let timerElement= document.createElement("div");
     timerElement.className= "timerClass"
     timerElement.id="timerID";
     document.body.appendChild(timerElement);
+    timerElement.innerHTML = null;
     timerElement.innerHTML = timeStart;
     timeStart--;
-    // Destroy Timer
-    //timerElement= document.getElementById('timerID');
-    //timerElement.parentNode.removeChild(timerElement);
-}
+    }
+
 
 function styleQuiz(){
 
