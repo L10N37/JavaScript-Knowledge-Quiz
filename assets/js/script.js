@@ -1,6 +1,5 @@
 //////////// Globals //////////////
-timeStart = 70;
-setInterval(timerDisplay, 1000);
+timeStart = 10;
 //////////////////////////////////
 
 // Insert Intro Screen
@@ -28,6 +27,11 @@ function removeIntro(){
 }
 
 function timerDisplay(){
+    // Times up stuff
+    if (timeStart==0){
+        alert("Time's up!");
+        location.reload();
+        }
     // Remove last timeupdate if exists
     let timerHasStarted = document.getElementById("timerID");
     if (timerHasStarted) timerHasStarted.parentNode.removeChild(timerHasStarted);
@@ -36,11 +40,10 @@ function timerDisplay(){
     timerElement.className= "timerClass"
     timerElement.id="timerID";
     document.body.appendChild(timerElement);
-    timerElement.innerHTML = null;
     timerElement.innerHTML = timeStart;
     timeStart--;
-    }
 
+}
 
 function styleQuiz(){
 
@@ -49,4 +52,3 @@ function styleQuiz(){
 function startQuiz(){
 
 }
-
