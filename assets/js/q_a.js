@@ -9,7 +9,7 @@ let questions= [
     correctAnswer: "&ltscript&gt"
   },
   {
-    question:  "What is the correct JavaScript syntax to change the content of the HTML element below? \n\n&ltp id=\"demo\"&gt This is a demonstration.&lt/p&gt",
+    question:  "What is the correct JavaScript syntax to change the content of the HTML element below? <br><br> <p> &ltp id=\"demo\"&gt This is a demonstration.&lt/p&gt <p>",
     answers:   ["document.getElementById(\"demo\").innerHTML = \"Hello World!\";", "document.getElementByName(\"p\").innerHTML = \"Hello World!\";", "#demo.innerHTML = \"Hello World!\";", "document.getElement(\"p\").innerHTML = \"Hello World!\";"],
     correctAnswer: "document.getElementById(\"demo\").innerHTML = \"Hello World!\";"
   },

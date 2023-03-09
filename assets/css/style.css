@@ -60,3 +60,7 @@ font-style: italic;
     font-weight: bolder;
     border: dotted;
 }
+
+p{
+    font-size:16px;
+}
