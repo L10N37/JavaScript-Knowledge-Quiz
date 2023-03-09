@@ -29,7 +29,7 @@ function removeIntro(){
 
 function timerDisplay(){
     // Times up stuff
-    if (timeStart==0){
+    if (timeStart<=0){
         alert("Time's up!");
         location.reload();
         }
@@ -52,12 +52,26 @@ function startQuiz(){
     questionVar.className= "questionsClass";
     questionVar.id="questionsID";
     document.body.appendChild(questionVar);
+    // display question array of objects question # as per index value
     questionVar.innerHTML = questions[index].question;
-    //console.log(questions[index].question)
     // Generate Answers
     let answersVar= document.createElement("div");
     answersVar.className= "answersClass";
     answersVar.id="answersID";
     document.body.appendChild(answersVar);
-    
+    // pluck answers from object array, as per current question index value
+    // and display in random order each quiz through
+    let randomAnswer1to4 =[];
+    for (let i= 0; i < 4; i++) {
+        const randomIndex = Math.floor(Math.random() * questions[index].answers.length);
+       randomAnswer1to4[i] = questions[index].answers[randomIndex];
+        // remove the answer from array, method sets new array length, 
+        // so we can't generate the same answer multiple times
+        questions[index].answers.splice(randomIndex, 1);
+        answersVar.innerHTML = randomAnswer1to4;
+    }
+
+
+ //  console.log(randomAnswer1to4) //test logger
+       
 }
