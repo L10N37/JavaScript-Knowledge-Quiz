@@ -24,6 +24,7 @@ body{
 }
 .button:hover{
 font-size: 100%;
+transition: 1s;
 }
 
 .highLight{
@@ -37,11 +38,18 @@ font-style: italic;
     top: 1px;
     right:1px;
     font-size:30px;
-    color:white
+    color:yellow;
 }
 
 .questionsClass{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:white;
     font-size: 32px;
+}
+
+
+#answersID{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:pink;
+    font-size: 18px;
 }

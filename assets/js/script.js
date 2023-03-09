@@ -45,8 +45,8 @@ function timerDisplay(){
 
 }
 
-function styleQuiz(q){
-
+generateAnswers(){
+    questions.answer1  + questions.q10fill1;
 }
 
 function startQuiz(){
@@ -56,4 +56,10 @@ function startQuiz(){
     questionVar.id="questionsID";
     document.body.appendChild(questionVar);
     questionVar.innerHTML = questions.question1;
+    // Generate Answers
+    let answersVar= document.createElement("div");
+    answersVar.className= "answersClass";
+    answersVar.id="answersID";
+    document.body.appendChild(answersVar);
+    answersVar.innerHTML = generateAnswers();
 }
