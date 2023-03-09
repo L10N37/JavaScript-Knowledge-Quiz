@@ -10,9 +10,20 @@ body{
 }
 
 .button{
+    background-color:white;
     color:red;
     box-sizing:border-box;
-    
+    font-weight: bolder;
+    border: none;
+    text-align:center;
+    padding: 20px 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    font-size:90%;
+}
+.button:hover{
+font-size: 100%;
 }
 
 .highLight{
