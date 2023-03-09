@@ -1,5 +1,5 @@
 //////////// Globals //////////////
-timeStart = 10;
+timeStart = 70;
 index = 0;
 //////////////////////////////////
 
@@ -44,7 +44,6 @@ function timerDisplay(){
     document.body.appendChild(timerElement);
     timerElement.innerHTML = timeStart;
     timeStart--;
-
 }
 
 function startQuiz(){
@@ -105,11 +104,15 @@ function startQuiz(){
         let element = event.target;
             // Check if the clicked element was the correct answer
             if (element.matches("#correctAnswerID")) {
-                alert("fffyeah");
+                alert("fffyeah!");
+                index++;
+                startQuiz();
+                return;
             }
             // Check if the clicked element was the correct answer
             if (element.matches("#answersID")) {
                 alert("fffno!");
+                timeStart=timeStart-10;
             }
         }
         )
