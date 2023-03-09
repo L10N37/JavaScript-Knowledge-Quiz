@@ -31,3 +31,8 @@ color:rgb(219, 8, 194);
 font-weight: bolder;
 font-style: italic;
 }
+
+#timerID{
+    font-size:30px;
+    color:white
+}
