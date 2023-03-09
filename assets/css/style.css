@@ -33,6 +33,15 @@ font-style: italic;
 }
 
 #timerID{
+    position:absolute;
+    top: 1px;
+    right:1px;
     font-size:30px;
     color:white
+}
+
+.questionsClass{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:white;
+    font-size: 32px;
 }

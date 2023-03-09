@@ -1,5 +1,5 @@
 //////////// Globals //////////////
-timeStart = 10;
+timeStart = 70;
 //////////////////////////////////
 
 // Insert Intro Screen
@@ -45,10 +45,15 @@ function timerDisplay(){
 
 }
 
-function styleQuiz(){
+function styleQuiz(q){
 
 }
 
 function startQuiz(){
-
+    // Create/ Display questions until answered
+    let questionVar= document.createElement("div");
+    questionVar.className= "questionsClass";
+    questionVar.id="questionsID";
+    document.body.appendChild(questionVar);
+    questionVar.innerHTML = questions.question1;
 }

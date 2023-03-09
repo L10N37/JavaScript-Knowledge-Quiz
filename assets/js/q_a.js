@@ -1,5 +1,4 @@
 //First 10 Questions from https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS
-//
 
 let questions= {
     question1:  "Inside which HTML element do we put the JavaScript?",
