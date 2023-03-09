@@ -34,8 +34,21 @@ function clearScreen(){
     remove.parentNode.removeChild(remove);
 }
 
+
+
 function score(correctAnswerPoints, timeLeftPoints) {
     console.log(correctAnswerPoints,timeLeftPoints)
+    // remove dead timer
+    let remove = document.getElementById('timerID');
+    remove.parentNode.removeChild(remove);
+    // remove correct / incorrect text from last attempt
+    removeCorrectText();
+    removeIncorrectText();
+    // create text input box for initial
+    let initialEntryBox = document.createElement("INPUT");
+    initialEntryBox.setAttribute("type", "text");
+    document.body.appendChild(initialEntryBox);
+
 }
 
 function timerDisplay(){
@@ -47,6 +60,7 @@ function timerDisplay(){
     window.clearInterval(i);
   }     // times up alert and pass score attributes to score function
         alert("Time's up!");
+        clearScreen();
         score(questionsAnsweredCounter, timeStart);
         }
     // Remove last timeupdate if exists
@@ -58,6 +72,9 @@ function timerDisplay(){
     timerElement.id="timerID";
     document.body.appendChild(timerElement);
     timerElement.innerHTML = timeStart;
+    // blank out the timer so it doesn't show in the high scores screen
+    // the element still exists, just blanking the variable
+    if (timeStart<=0) timerElement.innerHTML = "";
     timeStart--;
 }
 
@@ -161,12 +178,14 @@ function startQuiz(){
         clickableAnswers.addEventListener("click", function(event) {
         let element = event.target;
             // Check if the clicked element was the correct answer
+            // and remove the correct or incorrect text IF shown
             removeCorrectText();
             removeIncorrectText();
             if (element.matches("#correctAnswerID")) {
                 questionsAnsweredCounter++;
                 showCorrectText();
                 if (questionsAnsweredCounter==10){
+                    clearScreen();
                     alert("You answered all the questions correctly!");
                     score(questionsAnsweredCounter, timeStart);
                 }
@@ -177,7 +196,7 @@ function startQuiz(){
                 startQuiz();
                 return;
             }
-            // Check if the clicked element was the correct answer
+            // If selected the wrong answer
             else {
                 timeStart=timeStart-10;
                 showIncorrectText();
