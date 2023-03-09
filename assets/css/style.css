@@ -45,11 +45,13 @@ font-style: italic;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:white;
     font-size: 32px;
+    padding-bottom: 10%;
 }
 
-
 #answersID{
+    padding: 5%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color:pink;
-    font-size: 18px;
+    font-size: 24px;
+    text-align: left;
 }

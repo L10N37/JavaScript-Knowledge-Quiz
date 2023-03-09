@@ -29,7 +29,7 @@ function removeIntro(){
 
 function timerDisplay(){
     // Times up stuff
-    if (timeStart<=0){
+    if (timeStart==0 || timeStart<0){
         alert("Time's up!");
         location.reload();
         }
@@ -55,22 +55,44 @@ function startQuiz(){
     // display question array of objects question # as per index value
     questionVar.innerHTML = questions[index].question;
     // Generate Answers
-    let answersVar= document.createElement("div");
-    answersVar.className= "answersClass";
-    answersVar.id="answersID";
-    document.body.appendChild(answersVar);
+    //1
+    let answersVar0= document.createElement("div");
+    answersVar0.className= "answersClass";
+    answersVar0.id="answersID";
+    document.body.appendChild(answersVar0);
+    //2
+    let answersVar1= document.createElement("div");
+    answersVar1.className= "answersClass";
+    answersVar1.id="answersID";
+    document.body.appendChild(answersVar1);
+    //3
+    let answersVar2= document.createElement("div");
+    answersVar2.className= "answersClass";
+    answersVar2.id="answersID";
+    document.body.appendChild(answersVar2);
+    //4
+    let answersVar3= document.createElement("div");
+    answersVar3.className= "answersClass";
+    answersVar3.id="answersID";
+    document.body.appendChild(answersVar3);
     // pluck answers from object array, as per current question index value
     // and display in random order each quiz through
     let randomAnswer1to4 =[];
+    let AnswersJumbled =[];
     for (let i= 0; i < 4; i++) {
         const randomIndex = Math.floor(Math.random() * questions[index].answers.length);
         randomAnswer1to4[i] = questions[index].answers[randomIndex];
         // remove the answer from array, method sets new array length, 
         // so we can't generate the same answer multiple times
         questions[index].answers.splice(randomIndex, 1);
-        answersVar.innerHTML = randomAnswer1to4;
+        AnswersJumbled[i] =  randomAnswer1to4[i];
+        console.log(AnswersJumbled[i]);
     }
-
+    //AnswersJumbled = AnswersJumbled.join('');
+    answersVar0.innerHTML = AnswersJumbled[0];
+    answersVar1.innerHTML = AnswersJumbled[1];
+    answersVar2.innerHTML = AnswersJumbled[2];
+    answersVar3.innerHTML = AnswersJumbled[3];
 
  //  console.log(randomAnswer1to4) //test logger
        
