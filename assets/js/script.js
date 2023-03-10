@@ -128,9 +128,7 @@ function score(correctAnswerPoints, timeLeftPoints) {
         
     viewHighScoresButton.addEventListener("click", function(event) {
         
-    }) //regular bracket stays here! it's not stray!!
-
-        
+    }) //regular bracket stays here! it's not stray!!     
 }
  
 function stopTimer(){
@@ -147,8 +145,6 @@ function stopTimer(){
                                             }
 
 function timerDisplay(){
-    // Times up stuff
-    if (timeStart<=0) stopTimer();
 
     // Remove last timeupdate if exists
     let timerHasStarted = document.getElementById("timerID");
@@ -159,10 +155,13 @@ function timerDisplay(){
                     timerElement.id="timerID";
                         document.body.appendChild(timerElement);
                             timerElement.innerHTML = timeStart;
-    // blank out the timer so it doesn't show in the high scores screen
-    // the element still exists, just blanking the variable
-    if (timeStart<=0) timerElement.innerHTML = "";
     timeStart--;
+    // Times up stuff
+        if (timeStart<=0) {
+            stopTimer();
+            timerElement.innerHTML = "";
+            window.alert("Times up!");
+        }
 }
 
 function removeAnsweredText(){
@@ -191,7 +190,6 @@ function showCorrectText(){
     document.body.appendChild(correctText);
     correctText.innerHTML = "Correct!"
 }
-
 
 function replay(){
     // remove high score elements
