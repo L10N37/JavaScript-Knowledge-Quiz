@@ -1,7 +1,3 @@
-// First 10 Questions from https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS
-// Correct answer is always array element 1 inside question object
-// Array of Objects!
-
 let questions= [
   {
     question:  "Inside which HTML element do we put the JavaScript?",
