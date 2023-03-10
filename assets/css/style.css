@@ -87,6 +87,7 @@ p{
     border-bottom: solid white;
 }
 
-INPUT{
+inputTextArea{
     background-color:coral;
+    color: white;
 }

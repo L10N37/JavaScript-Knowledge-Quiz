@@ -2,6 +2,8 @@
 let timeStart = 70;
 let index = 0;
 let questionsAnsweredCounter = 0;
+let highscores= [];
+let localHighscoreIndex= 0;
 // Insert Intro Screen
 let introScreen= document.createElement("div");
 introScreen.className= "intro"
@@ -16,6 +18,16 @@ let introScreenAlt= document.createElement("div");
 introScreenAlt.className= "highLight"
 introScreen.appendChild(introScreenAlt);
 introScreenAlt.innerHTML = "\ You will be penalised 10 seconds for an incorrect answer!";
+// create locally stored high score index (string)
+window.localStorage.setItem("highscoreIndex",localHighscoreIndex);
+// we must stringify objects before we store them in the local storage
+localStorage.setItem("highscoreIndex", JSON.stringify(localHighscoreIndex));
+// check if local storage high score index value exists, if it does, increment it
+let doesHighscoreIndexExist = window.localStorage.getItem("highscoreIndex");
+if (doesHighscoreIndexExist){
+console.log("found high score index: " + doesHighscoreIndexExist)
+doesHighscoreIndexExist++;
+}
 ////////////////////////////////////////////////
 
 
@@ -34,8 +46,6 @@ function clearScreen(){
     remove.parentNode.removeChild(remove);
 }
 
-
-
 function score(correctAnswerPoints, timeLeftPoints) {
     console.log(correctAnswerPoints,timeLeftPoints)
     // remove dead timer
@@ -44,11 +54,70 @@ function score(correctAnswerPoints, timeLeftPoints) {
     // remove correct / incorrect text from last attempt
     removeCorrectText();
     removeIncorrectText();
-    // create text input box for initial
-    let initialEntryBox = document.createElement("INPUT");
-    initialEntryBox.setAttribute("type", "text");
-    document.body.appendChild(initialEntryBox);
+    // create text input box for initials entry
+    let initialsEntryBox = document.createElement("input");
+    initialsEntryBox.id="entryBox";
+    document.body.appendChild(initialsEntryBox);
+    // create 'Submit' button
+    let createButton = document.createElement("button");
+    createButton.className="buttonSubmitClass";
+    createButton.id= "buttonSubmitID";
+    document.body.appendChild(createButton);
+    createButton.innerHTML="Submit";
+    // create 'Play Again' button
+    createButton = document.createElement("button");
+    createButton.className="playAgainButtonClass";
+    createButton.id= "playAgainButtonID";
+    document.body.appendChild(createButton);
+    createButton.innerHTML="Play Again";
+    // create 'View High Scores' button
+    createButton = document.createElement("button");
+    createButton.className="viewScoresButtonClass";
+    createButton.id= "viewScoresButtonID";
+    document.body.appendChild(createButton);
+    createButton.innerHTML="View High Scores";
+    
 
+
+    // add click event to 'Submit' button
+    let submitButton = document.getElementById("buttonSubmitID");
+
+
+        submitButton.addEventListener("click", function(event) {
+        
+        // initalsEntered == text entry boxes text input area (default:blank)
+        let initialsEntered = document.getElementById("entryBox");
+        // this variable stores the characters input into text input area
+        const value= initialsEntered.value;
+        // local storage stuff
+        // `initials` is the key while the variable is the value.
+        // setting up our entered initials for local storage
+        window.localStorage.setItem("initials",value);
+        // we must stringify objects before we store them in the local storage
+        localStorage.setItem("initials", JSON.stringify(value[localIndex]));
+        //Testing input capture
+        console.log(value);
+        // retrieve value from local storage
+
+    }) //regular bracket stays here! it's not stray!!
+    
+
+
+        // add click event to 'Play Again' button
+        let playAgainButton = document.getElementById("playAgainButtonID");
+        
+        playAgainButton.addEventListener("click", function(event) {
+           location.reload();
+    }) //regular bracket stays here! it's not stray!!
+
+    // add click event to 'View High Scores'' button
+    let viewHighScoresButton = document.getElementById("viewScoresButtonID");
+        
+    viewHighScoresButton.addEventListener("click", function(event) {
+        
+    }) //regular bracket stays here! it's not stray!!
+
+        
 }
 
 function timerDisplay(){
@@ -61,6 +130,8 @@ function timerDisplay(){
   }     // times up alert and pass score attributes to score function
         alert("Time's up!");
         clearScreen();
+        removeCorrectText();
+        removeIncorrectText();
         score(questionsAnsweredCounter, timeStart);
         }
     // Remove last timeupdate if exists
@@ -68,7 +139,7 @@ function timerDisplay(){
     if (timerHasStarted) timerHasStarted.parentNode.removeChild(timerHasStarted);
     // Create Timer
     let timerElement= document.createElement("div");
-    timerElement.className= "timerClass"
+    timerElement.className= "timerClass";
     timerElement.id="timerID";
     document.body.appendChild(timerElement);
     timerElement.innerHTML = timeStart;
@@ -107,6 +178,11 @@ function showCorrectText(){
 }
 
 function startQuiz(){
+    // test local storage (high score entry for prior game/s)
+    let testLocalStorage=window.localStorage.getItem('initials');
+    console.log(testLocalStorage);
+    // [x] working but only storing last score
+
     // Create/ Display questions until answered
     let questionVar= document.createElement("div");
     questionVar.className= "questionsClass";
