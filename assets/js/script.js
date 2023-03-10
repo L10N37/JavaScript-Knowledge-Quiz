@@ -206,7 +206,7 @@ function replay(){
 }
 function startQuiz(){
     // for high score (max 5 entries, then rewrites itself from the start of high scores)
-    if (timesPlayed==5) timesPlayed==0;
+    if (timesPlayed==5) timesPlayed=0;
     // reset for next game
     if (index==10) index=0;
     timesPlayed++;
