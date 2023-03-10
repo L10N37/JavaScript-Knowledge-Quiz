@@ -18,19 +18,7 @@ let introScreenAlt= document.createElement("div");
 introScreenAlt.className= "highLight"
 introScreen.appendChild(introScreenAlt);
 introScreenAlt.innerHTML = "\ You will be penalised 10 seconds for an incorrect answer!";
-// create locally stored high score index (string)
-window.localStorage.setItem("highscoreIndex",localHighscoreIndex);
-// we must stringify objects before we store them in the local storage
-localStorage.setItem("highscoreIndex", JSON.stringify(localHighscoreIndex));
-// check if local storage high score index value exists, if it does, increment it
-let doesHighscoreIndexExist = window.localStorage.getItem("highscoreIndex");
-if (doesHighscoreIndexExist){
-console.log("found high score index string: " + doesHighscoreIndexExist)
-//convert back to number
-let currentHighScoreIndex = doesHighscoreIndexExist;
-parseInt(currentHighScoreIndex);
-console.log("found high score index #: " + currentHighScoreIndex);
-}
+
 ////////////////////////////////////////////////
 
 
@@ -101,8 +89,6 @@ function score(correctAnswerPoints, timeLeftPoints) {
 
     }) //regular bracket stays here! it's not stray!!
     
-
-
         // add click event to 'Play Again' button
         let playAgainButton = document.getElementById("playAgainButtonID");
         
@@ -178,11 +164,6 @@ function showCorrectText(){
 }
 
 function startQuiz(){
-    // test local storage (high score entry for prior game/s)
-    let testLocalStorage=window.localStorage.getItem('initials');
-    console.log(testLocalStorage);
-    // [x] working but only storing last score
-
     // Create/ Display questions until answered
     let questionVar= document.createElement("div");
     questionVar.className= "questionsClass";
@@ -268,7 +249,6 @@ function startQuiz(){
                 index++;
                 // Clear Screen for next round
                 clearScreen();
-                console.log(questionsAnsweredCounter);
                 startQuiz();
                 return;
             }
