@@ -25,8 +25,11 @@ localStorage.setItem("highscoreIndex", JSON.stringify(localHighscoreIndex));
 // check if local storage high score index value exists, if it does, increment it
 let doesHighscoreIndexExist = window.localStorage.getItem("highscoreIndex");
 if (doesHighscoreIndexExist){
-console.log("found high score index: " + doesHighscoreIndexExist)
-doesHighscoreIndexExist++;
+console.log("found high score index string: " + doesHighscoreIndexExist)
+//convert back to number
+let currentHighScoreIndex = doesHighscoreIndexExist;
+parseInt(currentHighScoreIndex);
+console.log("found high score index #: " + currentHighScoreIndex);
 }
 ////////////////////////////////////////////////
 
@@ -48,9 +51,6 @@ function clearScreen(){
 
 function score(correctAnswerPoints, timeLeftPoints) {
     console.log(correctAnswerPoints,timeLeftPoints)
-    // remove dead timer
-    let remove = document.getElementById('timerID');
-    remove.parentNode.removeChild(remove);
     // remove correct / incorrect text from last attempt
     removeCorrectText();
     removeIncorrectText();
