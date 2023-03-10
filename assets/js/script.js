@@ -1,4 +1,17 @@
 //////////// Global Area (on load) //////////////
+// count page reloads
+// https://stackoverflow.com/questions/31607773/counting-page-reloads
+var state = history.state || {};
+var reloadCount = state.reloadCount || 0;
+if (performance.navigation.type === 1) { // Reload
+    state.reloadCount = ++reloadCount;
+    history.replaceState(state, null, document.URL);
+} else if (reloadCount) {
+    delete state.reloadCount;
+    reloadCount = 0;
+    history.replaceState(state, null, document.URL);
+}
+
 let timeStart = 70;
 let index = 0;
 let questionsAnsweredCounter = 0;
@@ -18,7 +31,6 @@ let introScreenAlt= document.createElement("div");
 introScreenAlt.className= "highLight"
 introScreen.appendChild(introScreenAlt);
 introScreenAlt.innerHTML = "\ You will be penalised 10 seconds for an incorrect answer!";
-
 ////////////////////////////////////////////////
 
 
@@ -82,7 +94,7 @@ function score(correctAnswerPoints, timeLeftPoints) {
         // setting up our entered initials for local storage
         window.localStorage.setItem("initials",value);
         // we must stringify objects before we store them in the local storage
-        localStorage.setItem("initials", JSON.stringify(value[localIndex]));
+        localStorage.setItem("initials", JSON.stringify(value));
         //Testing input capture
         console.log(value);
         // retrieve value from local storage
