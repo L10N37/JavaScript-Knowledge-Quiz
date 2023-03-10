@@ -35,12 +35,6 @@ function clearScreen(){
 }
 
 function score(correctAnswerPoints, timeLeftPoints) {
-
-
-        var elementExists = document.getElementById("wrapper");
-            if (elementExists){
-                    elementExists.parentNode.removeChild(elementExists);
-                    }
        
     console.log("Correct Answers: " + correctAnswerPoints + " Time Left: " + timeLeftPoints)
     // remove correct / incorrect text from last attempt
@@ -71,14 +65,10 @@ function score(correctAnswerPoints, timeLeftPoints) {
             createButton.id= "viewScoresButtonID";
                 wrapper.appendChild(createButton);
                     createButton.innerHTML="View High Scores";
-    
-
 
     // add click event to 'Submit' button
     let submitButton = document.getElementById("buttonSubmitID");
-
-
-        submitButton.addEventListener("click", function(event) {
+    submitButton.addEventListener("click", function(event) {
         
         // initalsEntered == text entry boxes text input area (default:blank)
         let initialsEntered = document.getElementById("entryBox");
@@ -124,15 +114,13 @@ function score(correctAnswerPoints, timeLeftPoints) {
         //                                                         //
 
 
-
     }) //regular bracket stays here! it's not stray!!
     
         // add click event to 'Play Again' button
         let playAgainButton = document.getElementById("playAgainButtonID");
         
         playAgainButton.addEventListener("click", function(event) {
-            clearScreen();
-                startQuiz();
+                replay();
     }) //regular bracket stays here! it's not stray!!
 
     // add click event to 'View High Scores'' button
@@ -144,8 +132,7 @@ function score(correctAnswerPoints, timeLeftPoints) {
 
         
 }
-
-    
+ 
 function stopTimer(){
 
     const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
@@ -155,12 +142,10 @@ function stopTimer(){
         // times up alert and call score function
         //alert("Time's up!");
         clearScreen();
-        removeAnsweredText();
+            removeAnsweredText();
                 score(index, timeStart);
                                             }
 
-
-        
 function timerDisplay(){
     // Times up stuff
     if (timeStart<=0) stopTimer();
@@ -207,13 +192,24 @@ function showCorrectText(){
     correctText.innerHTML = "Correct!"
 }
 
-function startQuiz(){
 
-    timesPlayed++;
+function replay(){
+    // remove high score elements
+    let highScoreElements = document.getElementById("wrapper");
+    highScoreElements.parentNode.removeChild(highScoreElements);
+    // reset gameplay variables and call gameplay functions
+    questions = questionsMultiPlay;
+    timeStart = 70;
+    setInterval(timerDisplay, 1000);
+    timerDisplay();
+    startQuiz();
+}
+function startQuiz(){
     // for high score (max 5 entries, then rewrites itself from the start of high scores)
     if (timesPlayed==5) timesPlayed==0;
     // reset for next game
     if (index==10) index=0;
+    timesPlayed++;
     // Create/ Display questions until answered
     let questionVar= document.createElement("div");
         questionVar.className= "questionsClass";
@@ -233,7 +229,6 @@ function startQuiz(){
             questions[index].answers.splice(randomIndex, 1);
                 AnswersJumbled[i] =  randomAnswer1to4[i];
     }
-    // Generate Answers
     // parent used for click event listener
     let answersVarParent= document.createElement("div");
         answersVarParent.className= "listenTarget";
@@ -268,7 +263,7 @@ function startQuiz(){
                 answersVar3.innerHTML = AnswersJumbled[3];
 
     if (AnswersJumbled[0] == questions[index].correctAnswer) {
-            answersVar0.id="correctAnswerID";
+    answersVar0.id="correctAnswerID";
         }
     else if (AnswersJumbled[1] == questions[index].correctAnswer) {
     answersVar1.id="correctAnswerID";
@@ -293,11 +288,8 @@ function startQuiz(){
                             // if Answered final question correctly
                             if (index==10){
                                  alert("You answered all the questions correctly!");
-                                    clearScreen();
-                                        removeAnsweredText();
-                                            stopTimer();
-                                                score(index, timeStart);
-                                        }
+                                    stopTimer();
+                                    }
                                             // Clear Screen for next round (not up to final question)
                                                 if (index!=10){
                                                     clearScreen();
