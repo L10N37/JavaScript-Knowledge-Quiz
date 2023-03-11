@@ -3,7 +3,6 @@
 
 ## A short questionnaire to test your fundamental JavaScript knowledge
 <br />
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
 This is a short questionnaire to test your fundamental Javascript knowledge!
 <br />
 The questions are the first 10 questions from the w3school JS quiz at https://www.w3schools.com/js/js_quiz.asp
