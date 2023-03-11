@@ -40,7 +40,6 @@ function clearScreen(){
 }
 
 function score(correctAnswerPoints, timeLeftPoints) {
-       
     console.log("Correct Answers: " + correctAnswerPoints + " Time Left: " + timeLeftPoints)
     // remove correct / incorrect text from last attempt
   removeAnsweredText();
@@ -168,7 +167,8 @@ function stopTimer(){
         //alert("Time's up!");
         clearScreen();
             removeAnsweredText();
-                score(index, timeStart);
+                if(timeStart<0) timeStart=0;
+                    score(index, timeStart);
                                             }
 
 function timerDisplay(){
