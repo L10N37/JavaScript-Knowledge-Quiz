@@ -1,7 +1,6 @@
 let timeStart= 70;
 let index= 0;
 let timesPlayed=1;
-let highscore;
 // Insert Intro Screen
 let introScreen= document.createElement("div");
 introScreen.className= "intro"
@@ -82,11 +81,11 @@ function score(correctAnswerPoints, timeLeftPoints) {
     // add click event to 'Submit' button
     let submitButton = document.getElementById("buttonSubmitID");
     submitButton.addEventListener("click", function(event) {
-        
         // initalsEntered == text entry boxes text input area (default:blank)
         let initialsEntered = document.getElementById("entryBox");
-        // this variable stores the characters input into text input area
-        const value= initialsEntered.value+"&nbsp&nbsp&nbsp"+timeLeftPoints+"&nbsp&nbsp&nbsp"+correctAnswerPoints+"/10";
+        // this variable stores the characters input into text input area, convert to uppcase if not already
+        let value = initialsEntered.value.toUpperCase();
+        value = value+"&nbsp&nbsp&nbsp"+timeLeftPoints+"&nbsp&nbsp&nbsp"+correctAnswerPoints+"/10";
         // local storage stuff
         // `initials` is the key while the variable is the value.
         // setting up our entered initials for local storage
@@ -150,29 +149,21 @@ function score(correctAnswerPoints, timeLeftPoints) {
     })
 }
  
-function highScoreList(scores){
 
-    switch(timesPlayed) {
-        case 1: 
-        highscore= localStorage.getItem("initials1");
-        break;
-        case 2:
-        highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2");
-        break;
-        case 3:
-        highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
-        + localStorage.getItem("initials3");
-        break;
-        case 4:
-        highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
-        + localStorage.getItem("initials3") + localStorage.getItem("initials4");
-        break;
-        case 5:
-        highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
-        + localStorage.getItem("initials3") + localStorage.getItem("initials4") + localStorage.getItem("initials5");
-      } 
-    return(highscore.replace(/["''"]+/g,'<br>'));
-    }
+function highScoreList(scores){
+    let a=localStorage.getItem("initials1")
+        if (a==null) a= "";
+            let b=localStorage.getItem("initials2")
+                if (b==null) b= "d";
+                    let c=localStorage.getItem("initials3")
+                        if (c==null) c= "";
+                            let d=localStorage.getItem("initials4")
+                                if (d==null) d= "";
+                                    let e=localStorage.getItem("initials5")
+                                        if (e==null) e= "";
+                                            let all = a+b+c+d+e;
+                                                    return(all.replace(/["''"]+/g,'<br>'));
+                                            }
 
 function stopTimer(){
 
