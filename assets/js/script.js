@@ -57,7 +57,7 @@ function score(correctAnswerPoints, timeLeftPoints) {
             createButton.className="buttonSubmitClass";
                 createButton.id= "buttonSubmitID";
                     wrapper.appendChild(createButton);
-                        createButton.innerHTML="Submit";
+                        createButton.innerHTML="Submit Your Initials";
     // create 'Play Again' button
     createButton = document.createElement("button");
         createButton.className="playAgainButtonClass";
@@ -96,32 +96,32 @@ function score(correctAnswerPoints, timeLeftPoints) {
         console.log("You just entered: " + value + " Into the high score entry");
         
         if (timesPlayed==1) {
-            localStorage.setItem("initials0", JSON.stringify(value));
+            localStorage.setItem("initials1", JSON.stringify(value));
             }
                 else if (timesPlayed==2) {
-                    localStorage.setItem("initials1", JSON.stringify(value));
+                    localStorage.setItem("initials2", JSON.stringify(value));
                         }
                             else if (timesPlayed==3) {
-                                localStorage.setItem("initials2", JSON.stringify(value));
+                                localStorage.setItem("initials3", JSON.stringify(value));
                                     }
                                         else if (timesPlayed==4) {
-                                            localStorage.setItem("initials3", JSON.stringify(value));
+                                            localStorage.setItem("initials4", JSON.stringify(value));
                                                 }
                                                     else if (timesPlayed==5) {
-                                                        localStorage.setItem("initials4", JSON.stringify(value));
+                                                        localStorage.setItem("initials5", JSON.stringify(value));
                                                         }
                                                          
 
         //          check score status in console log               //                                                 
-        let checkCurrentScoreStatus = localStorage.getItem("initials0");
-        console.log(checkCurrentScoreStatus);
-        checkCurrentScoreStatus = localStorage.getItem("initials1");
+        let checkCurrentScoreStatus = localStorage.getItem("initials1");
         console.log(checkCurrentScoreStatus);
         checkCurrentScoreStatus = localStorage.getItem("initials2");
         console.log(checkCurrentScoreStatus);
         checkCurrentScoreStatus = localStorage.getItem("initials3");
         console.log(checkCurrentScoreStatus);
         checkCurrentScoreStatus = localStorage.getItem("initials4");
+        console.log(checkCurrentScoreStatus);
+        checkCurrentScoreStatus = localStorage.getItem("initials5");
         console.log(checkCurrentScoreStatus);
         //                                                         //
     })
@@ -150,8 +150,8 @@ function score(correctAnswerPoints, timeLeftPoints) {
 }
  
 function highScoreList(scores){
-    let a= localStorage.getItem("initials0")+
-        localStorage.getItem("initials1")+
+    let a= localStorage.getItem("initials1")+
+        localStorage.getItem("initials2")+
             localStorage.getItem("initials3")+
                 localStorage.getItem("initials4")+
                     localStorage.getItem("initials5");
