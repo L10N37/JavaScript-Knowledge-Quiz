@@ -87,7 +87,7 @@ p{
     border-bottom: solid white;
 }
 
-inputTextArea{
-    background-color:coral;
-    color: white;
+.highScoresClass{
+    font-size:32px;
+    color:aqua;
 }

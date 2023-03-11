@@ -1,6 +1,5 @@
 let timeStart= 70;
 let index= 0;
-let highscores= [];
 let timesPlayed=1;
 // Insert Intro Screen
 let introScreen= document.createElement("div");
@@ -118,21 +117,40 @@ function score(correctAnswerPoints, timeLeftPoints) {
         checkCurrentScoreStatus = localStorage.getItem("initials4");
         console.log(checkCurrentScoreStatus);
         //                                                         //
-    }) //regular bracket stays here! it's not stray!!
+    })
     
         // add click event to 'Play Again' button
         let playAgainButton = document.getElementById("playAgainButtonID");
         playAgainButton.addEventListener("click", function(event) {
                 replay();
-    }) //regular bracket stays here! it's not stray!!
+    })
 
     // add click event to 'View High Scores'' button
     let viewHighScoresButton = document.getElementById("viewScoresButtonID");
     viewHighScoresButton.addEventListener("click", function(event) {
-        
-    }) //regular bracket stays here! it's not stray!!     
+        //create high scores viewable front end list using stored high score values from JSON Stringify
+        let alreadyClickedHighScores= document.getElementById("highScoresID");
+        if (alreadyClickedHighScores){
+            alreadyClickedHighScores.parentNode.removeChild(alreadyClickedHighScores);     
+            }
+
+        let highScoresList= document.createElement("div");
+        highScoresList.className= "highScoresClass";
+            highScoresList.id="highScoresID";
+                document.body.appendChild(highScoresList);
+                        highScoresList.innerHTML= highScoreList();     
+    })
 }
  
+function highScoreList(scores){
+    let a= localStorage.getItem("initials0")+
+    localStorage.getItem("initials1")+
+    localStorage.getItem("initials3")+
+    localStorage.getItem("initials4")+
+    localStorage.getItem("initials5");
+    return(a.replace(/['"]+/g, '<br>'));
+}
+
 function stopTimer(){
 
     const interval_id = window.setInterval(function(){}, Number.MAX_SAFE_INTEGER);
@@ -182,23 +200,29 @@ function removeAnsweredText(){
 
 function showIncorrectText(){
     let incorrectText= document.createElement("div");
-    incorrectText.id="incorrectText";
-    document.body.appendChild(incorrectText);
-    incorrectText.innerHTML = "Wrong";
-}
+        incorrectText.id="incorrectText";
+            document.body.appendChild(incorrectText);
+                incorrectText.innerHTML = "Wrong";
+                }
 
 function showCorrectText(){
     let correctText= document.createElement("div");
-    correctText.id="correctText";
-    document.body.appendChild(correctText);
-    correctText.innerHTML = "Correct!"
-}
+        correctText.id="correctText";
+            document.body.appendChild(correctText);
+                correctText.innerHTML = "Correct!"
+                }
+
+function removeHighScores(){
+    let highScoreElements = document.getElementById("wrapper");
+        highScoreElements.parentNode.removeChild(highScoreElements);
+            highScoreElements = document.getElementById("highScoresID");
+                highScoreElements.parentNode.removeChild(highScoreElements);
+                }
 
 function replay(){
     timesPlayed++;
     // remove high score elements
-    let highScoreElements = document.getElementById("wrapper");
-    highScoreElements.parentNode.removeChild(highScoreElements);
+    removeHighScores();
     // reset gameplay variables and call gameplay functions
     timeStart = 70;
     index=0;
@@ -207,8 +231,8 @@ function replay(){
     startQuiz();
 }
 function startQuiz(){
-        // for high score (max 5 entries, then rewrites itself from the start of high scores)
-        if (timesPlayed==6) timesPlayed=1;
+    // for high score (max 5 entries, then rewrites itself from the start of high scores)
+    if (timesPlayed==6) timesPlayed=1;
     // Create/ Display questions until answered
     let questionVar= document.createElement("div");
         questionVar.className= "questionsClass";
