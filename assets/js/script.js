@@ -70,6 +70,13 @@ function score(correctAnswerPoints, timeLeftPoints) {
             createButton.id= "viewScoresButtonID";
                 wrapper.appendChild(createButton);
                     createButton.innerHTML="View High Scores";
+    // create scoreboard header (reusing variable from buttons)
+    createButton = document.createElement("div");
+        createButton.className="scoreBoardHeaderClass";
+            createButton.id= "scoreBoardHeaderID";
+                wrapper.appendChild(createButton);
+                    createButton.innerHTML="Initials |&nbsp&nbspTime Left |&nbsp&nbspCorrect Answers";
+
 
     // add click event to 'Submit' button
     let submitButton = document.getElementById("buttonSubmitID");
