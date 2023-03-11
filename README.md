@@ -28,7 +28,7 @@ After 5+ play throughs, you will start over writing the high scores section from
 ## Questionnaire Introduction Screen Screenshot
 
 <p align="center">
-  <img width="460" height="300" src=assets/images/Screenshot.png>
+  <img src=assets/images/Screenshot.png>
 </p>
 
 ## Live link to deployed application
