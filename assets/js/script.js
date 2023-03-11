@@ -158,13 +158,15 @@ function highScoreList(scores){
         break;
         case 2:
         highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2");
-          break;
+        break;
         case 3:
         highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
         + localStorage.getItem("initials3");
+        break;
         case 4:
         highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
         + localStorage.getItem("initials3") + localStorage.getItem("initials4");
+        break;
         case 5:
         highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
         + localStorage.getItem("initials3") + localStorage.getItem("initials4") + localStorage.getItem("initials5");
