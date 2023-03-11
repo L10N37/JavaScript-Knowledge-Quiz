@@ -196,8 +196,6 @@ function showCorrectText(){
 
 function replay(){
     timesPlayed++;
-    // for high score (max 5 entries, then rewrites itself from the start of high scores)
-    if (timesPlayed==5) timesPlayed=0;
     // remove high score elements
     let highScoreElements = document.getElementById("wrapper");
     highScoreElements.parentNode.removeChild(highScoreElements);
@@ -209,6 +207,8 @@ function replay(){
     startQuiz();
 }
 function startQuiz(){
+        // for high score (max 5 entries, then rewrites itself from the start of high scores)
+        if (timesPlayed==6) timesPlayed=1;
     // Create/ Display questions until answered
     let questionVar= document.createElement("div");
         questionVar.className= "questionsClass";
@@ -235,7 +235,6 @@ let tempAnswerStorage = {};
             questions[index].answers.splice(randomIndex, 1);
                 AnswersJumbled[i] =  randomAnswer1to4[i];
     }
-
     //  restore the answers for next play through/s back into the array it was sliced from
     for (let i = 0; i < 4; i++) {
         questions[index].answers[i]= tempAnswerStorage[i];
