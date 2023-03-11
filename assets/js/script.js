@@ -1,8 +1,7 @@
 let timeStart= 70;
 let index= 0;
 let highscores= [];
-let localHighscoreIndex= 0;
-let timesPlayed=0;
+let timesPlayed=1;
 // Insert Intro Screen
 let introScreen= document.createElement("div");
 introScreen.className= "intro"
@@ -18,6 +17,13 @@ introScreenAlt.className= "highLight"
 introScreen.appendChild(introScreenAlt);
 introScreenAlt.innerHTML = "\ You will be penalised 10 seconds for an incorrect answer!";
 
+    // add click event to 'I'm Ready' button
+    let playButton = document.getElementById("imReady");
+    playButton.addEventListener("click", function(event) {
+        removeIntro();
+        setInterval(timerDisplay, 1000);
+        timerDisplay();
+        startQuiz(); })
 
 function removeIntro(){
     // delete unecessary elements
@@ -112,20 +118,16 @@ function score(correctAnswerPoints, timeLeftPoints) {
         checkCurrentScoreStatus = localStorage.getItem("initials4");
         console.log(checkCurrentScoreStatus);
         //                                                         //
-
-
     }) //regular bracket stays here! it's not stray!!
     
         // add click event to 'Play Again' button
         let playAgainButton = document.getElementById("playAgainButtonID");
-        
         playAgainButton.addEventListener("click", function(event) {
                 replay();
     }) //regular bracket stays here! it's not stray!!
 
     // add click event to 'View High Scores'' button
     let viewHighScoresButton = document.getElementById("viewScoresButtonID");
-        
     viewHighScoresButton.addEventListener("click", function(event) {
         
     }) //regular bracket stays here! it's not stray!!     
@@ -159,6 +161,7 @@ function timerDisplay(){
     // Times up stuff
         if (timeStart<=0) {
             stopTimer();
+            let timerElement = document.getElementById("timerID");
             timerElement.innerHTML = "";
             window.alert("Times up!");
         }
@@ -192,22 +195,20 @@ function showCorrectText(){
 }
 
 function replay(){
+    timesPlayed++;
+    // for high score (max 5 entries, then rewrites itself from the start of high scores)
+    if (timesPlayed==5) timesPlayed=0;
     // remove high score elements
     let highScoreElements = document.getElementById("wrapper");
     highScoreElements.parentNode.removeChild(highScoreElements);
     // reset gameplay variables and call gameplay functions
-    questions = questionsMultiPlay;
     timeStart = 70;
+    index=0;
     setInterval(timerDisplay, 1000);
     timerDisplay();
     startQuiz();
 }
 function startQuiz(){
-    // for high score (max 5 entries, then rewrites itself from the start of high scores)
-    if (timesPlayed==5) timesPlayed=0;
-    // reset for next game
-    if (index==10) index=0;
-    timesPlayed++;
     // Create/ Display questions until answered
     let questionVar= document.createElement("div");
         questionVar.className= "questionsClass";
@@ -215,17 +216,29 @@ function startQuiz(){
                 document.body.appendChild(questionVar);
     // display question array of objects question # as per index value
                     questionVar.innerHTML = questions[index].question;
+
+// variable to store answers in temporarily as we slice them out of the answers arrays
+let tempAnswerStorage = {};
+
     // pluck answers from object array, as per current question index value
     // and display in random order each quiz through
     let randomAnswer1to4 =[];
         let AnswersJumbled =[];
             for (let i= 0; i < 4; i++) {
                 const randomIndex = Math.floor(Math.random() * questions[index].answers.length);
-                        randomAnswer1to4[i] = questions[index].answers[randomIndex];
-        // remove the answer from array, method sets new array length, 
+                randomAnswer1to4[i] = questions[index].answers[randomIndex];
+                //store the random answer here temporarily before we slice it out
+                tempAnswerStorage[i] = questions[index].answers[randomIndex];
+        // slice the answer out of the array, slice method sets new array length 
         // so we can't generate the same answer multiple times
+            let tempAnswerStored = questions[index].answers.randomIndex;
             questions[index].answers.splice(randomIndex, 1);
                 AnswersJumbled[i] =  randomAnswer1to4[i];
+    }
+
+    //  restore the answers for next play through/s back into the array it was sliced from
+    for (let i = 0; i < 4; i++) {
+        questions[index].answers[i]= tempAnswerStorage[i];
     }
     // parent used for click event listener
     let answersVarParent= document.createElement("div");
@@ -287,6 +300,8 @@ function startQuiz(){
                             if (index==10){
                                  alert("You answered all the questions correctly!");
                                     stopTimer();
+                                    let timerElement = document.getElementById("timerID");
+                                    timerElement.innerHTML = "";
                                     }
                                             // Clear Screen for next round (not up to final question)
                                                 if (index!=10){
