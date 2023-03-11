@@ -20,7 +20,7 @@ Load up the live link further down in this read me and click on the 'I'm Ready' 
 
 ## Features
 <br />
-Though it wasn't necessarily a grading requirement, I've implemented scatter functionality to the generated answers.<br /> They will be in a random order on each playthrough/ load. The quiz also allows you to save up to 5 high scores.<br /> The high scores differs a little from the mock up gif in that it also records the time left, along with the quantity of answers that were answered correctly.<br /> I've also changed the high score section to display questions as a fraction. <br />The entry box is capped at 3 characters for initial entry.<br /> After inputting your initials, you have an infinite amount of chances to change them should you make a mistake - this will save locally once you play again.
+Though it wasn't necessarily a grading requirement, I've implemented scatter functionality to the generated answers.<br /> They will be in a random order on each playthrough/ load.<br /> The quiz also allows you to save up to 5 high scores.<br /> The high scores differs a little from the mock up gif in that it also records the time left, along with the quantity of answers that were answered correctly.<br /> I've also changed the high score section to display questions as a fraction. <br />The entry box is capped at 3 characters for initial entry.<br /> After inputting your initials, you have an infinite amount of chances to change them should you make a mistake - this will save locally once you play again.
 <br />
 After 5+ play throughs, you will start over writing the high scores section from score 1 through to score 5 again.
 <br />
