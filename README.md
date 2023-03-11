@@ -1,5 +1,6 @@
 # JavaScript-Knowledge-Quiz
 <br />
+
 ## A short questionnaire to test your fundamental JavaScript knowledge
 <br />
 Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
