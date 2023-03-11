@@ -25,7 +25,7 @@ Though it wasn't necessarily a grading requirement, I've implemented scatter fun
 After 5+ play throughs, you will start over writing the high scores section from score 1 through to score 5 again.
 <br />
 
-## Questionnaire Introduction Screen Screenshot
+## Questionnaire Introduction Screenshot
 
 <p align="center">
   <img src=assets/images/Screenshot.png>
