@@ -78,7 +78,7 @@ function score(correctAnswerPoints, timeLeftPoints) {
         // initalsEntered == text entry boxes text input area (default:blank)
         let initialsEntered = document.getElementById("entryBox");
         // this variable stores the characters input into text input area
-        const value= initialsEntered.value;
+        const value= initialsEntered.value+"&nbsp&nbsp&nbsp"+timeLeftPoints+"&nbsp&nbsp&nbsp"+correctAnswerPoints;
         // local storage stuff
         // `initials` is the key while the variable is the value.
         // setting up our entered initials for local storage
@@ -144,12 +144,12 @@ function score(correctAnswerPoints, timeLeftPoints) {
  
 function highScoreList(scores){
     let a= localStorage.getItem("initials0")+
-    localStorage.getItem("initials1")+
-    localStorage.getItem("initials3")+
-    localStorage.getItem("initials4")+
-    localStorage.getItem("initials5");
-    return(a.replace(/['"]+/g, '<br>'));
-}
+        localStorage.getItem("initials1")+
+            localStorage.getItem("initials3")+
+                localStorage.getItem("initials4")+
+                    localStorage.getItem("initials5");
+                        return(a.replace(/['"]+/g, '<br>'));
+                        }
 
 function stopTimer(){
 
