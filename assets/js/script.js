@@ -85,7 +85,7 @@ function score(correctAnswerPoints, timeLeftPoints) {
         // initalsEntered == text entry boxes text input area (default:blank)
         let initialsEntered = document.getElementById("entryBox");
         // this variable stores the characters input into text input area
-        const value= initialsEntered.value+"&nbsp&nbsp&nbsp"+timeLeftPoints+"&nbsp&nbsp&nbsp"+correctAnswerPoints;
+        const value= initialsEntered.value+"&nbsp&nbsp&nbsp"+timeLeftPoints+"&nbsp&nbsp&nbsp"+correctAnswerPoints+"/10";
         // local storage stuff
         // `initials` is the key while the variable is the value.
         // setting up our entered initials for local storage
