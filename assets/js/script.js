@@ -1,6 +1,7 @@
 let timeStart= 70;
 let index= 0;
 let timesPlayed=1;
+let highscore;
 // Insert Intro Screen
 let introScreen= document.createElement("div");
 introScreen.className= "intro"
@@ -150,14 +151,26 @@ function score(correctAnswerPoints, timeLeftPoints) {
 }
  
 function highScoreList(scores){
-    let a= localStorage.getItem("initials1")+
-        localStorage.getItem("initials2")+
-            localStorage.getItem("initials3")+
-                localStorage.getItem("initials4")+
-                    localStorage.getItem("initials5");
-                      a.replace('null','');
-                        return(a.replace(/['"]+/g, '<br>'));
-                        }
+
+    switch(timesPlayed) {
+        case 1: 
+        highscore= localStorage.getItem("initials1");
+        break;
+        case 2:
+        highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2");
+          break;
+        case 3:
+        highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
+        + localStorage.getItem("initials3");
+        case 4:
+        highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
+        + localStorage.getItem("initials3") + localStorage.getItem("initials4");
+        case 5:
+        highscore= localStorage.getItem("initials1") + localStorage.getItem("initials2")
+        + localStorage.getItem("initials3") + localStorage.getItem("initials4") + localStorage.getItem("initials5");
+      } 
+    return(highscore.replace(/["''"]+/g,'<br>'));
+    }
 
 function stopTimer(){
 
@@ -188,10 +201,10 @@ function timerDisplay(){
     // Times up stuff
         if (timeStart<=0) {
             stopTimer();
-            let timerElement = document.getElementById("timerID");
-            timerElement.innerHTML = "";
-            window.alert("Times up!");
-        }
+                let timerElement = document.getElementById("timerID");
+                    timerElement.innerHTML = "";
+                        window.alert("Times up!");
+                    }
 }
 
 function removeAnsweredText(){
@@ -230,15 +243,15 @@ function removeHighScores(){
 
 function replay(){
     timesPlayed++;
-    // remove high score elements
-    removeHighScores();
-    // reset gameplay variables and call gameplay functions
-    timeStart = 70;
-    index=0;
-    setInterval(timerDisplay, 1000);
-    timerDisplay();
-    startQuiz();
-}
+        // remove high score elements
+        removeHighScores();
+        // reset gameplay variables and call gameplay functions
+            timeStart = 70;
+                index=0;
+                    setInterval(timerDisplay, 1000);
+                        timerDisplay();
+                            startQuiz();
+                            }
 function startQuiz(){
     // for high score (max 5 entries, then rewrites itself from the start of high scores)
     if (timesPlayed==6) timesPlayed=1;
@@ -259,15 +272,15 @@ let tempAnswerStorage = {};
         let AnswersJumbled =[];
             for (let i= 0; i < 4; i++) {
                 const randomIndex = Math.floor(Math.random() * questions[index].answers.length);
-                randomAnswer1to4[i] = questions[index].answers[randomIndex];
-                //store the random answer here temporarily before we slice it out
-                tempAnswerStorage[i] = questions[index].answers[randomIndex];
-        // slice the answer out of the array, slice method sets new array length 
-        // so we can't generate the same answer multiple times
-            let tempAnswerStored = questions[index].answers.randomIndex;
-            questions[index].answers.splice(randomIndex, 1);
-                AnswersJumbled[i] =  randomAnswer1to4[i];
-    }
+                    randomAnswer1to4[i] = questions[index].answers[randomIndex];
+                    //store the random answer here temporarily before we slice it out
+                        tempAnswerStorage[i] = questions[index].answers[randomIndex];
+            // slice the answer out of the array, slice method sets new array length 
+            // so we can't generate the same answer multiple times
+                            let tempAnswerStored = questions[index].answers.randomIndex;
+                                questions[index].answers.splice(randomIndex, 1);
+                                    AnswersJumbled[i] =  randomAnswer1to4[i];
+                                    }
     //  restore the answers for next play through/s back into the array it was sliced from
     for (let i = 0; i < 4; i++) {
         questions[index].answers[i]= tempAnswerStorage[i];
