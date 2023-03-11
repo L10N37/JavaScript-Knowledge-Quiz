@@ -75,17 +75,17 @@ function score(correctAnswerPoints, timeLeftPoints) {
         createButton.className="scoreBoardHeaderClass";
             createButton.id= "scoreBoardHeaderID";
                 wrapper.appendChild(createButton);
-                    createButton.innerHTML="Initials |&nbsp&nbspTime Left |&nbsp&nbspCorrect Answers";
-
-
+    
     // add click event to 'Submit' button
     let submitButton = document.getElementById("buttonSubmitID");
     submitButton.addEventListener("click", function(event) {
         // initalsEntered == text entry boxes text input area (default:blank)
         let initialsEntered = document.getElementById("entryBox");
         // this variable stores the characters input into text input area, convert to uppcase if not already
+        let spacing = "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"
         let value = initialsEntered.value.toUpperCase();
-        value = value+"&nbsp&nbsp&nbsp"+timeLeftPoints+"&nbsp&nbsp&nbsp"+correctAnswerPoints+"/10";
+        value = "Name: "+value+spacing+"Time Left:  "+timeLeftPoints+spacing+"Correct Answers:"+"&nbsp"+correctAnswerPoints+"/10";
+        
         // local storage stuff
         // `initials` is the key while the variable is the value.
         // setting up our entered initials for local storage
