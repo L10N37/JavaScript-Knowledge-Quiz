@@ -148,13 +148,12 @@ function score(correctAnswerPoints, timeLeftPoints) {
                         highScoresList.innerHTML= highScoreList();     
     })
 }
- 
 
 function highScoreList(scores){
     let a=localStorage.getItem("initials1")
         if (a==null) a= "";
             let b=localStorage.getItem("initials2")
-                if (b==null) b= "d";
+                if (b==null) b= "";
                     let c=localStorage.getItem("initials3")
                         if (c==null) c= "";
                             let d=localStorage.getItem("initials4")
