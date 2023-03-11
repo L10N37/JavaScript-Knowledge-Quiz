@@ -155,6 +155,7 @@ function highScoreList(scores){
             localStorage.getItem("initials3")+
                 localStorage.getItem("initials4")+
                     localStorage.getItem("initials5");
+                      a.replace('null','');
                         return(a.replace(/['"]+/g, '<br>'));
                         }
 
