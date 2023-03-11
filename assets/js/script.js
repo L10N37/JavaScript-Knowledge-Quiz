@@ -49,8 +49,9 @@ function score(correctAnswerPoints, timeLeftPoints) {
                  document.body.appendChild(wrapper);
     // create text input box for initials entry
         let initialsEntryBox = document.createElement("input");
-            initialsEntryBox.id="entryBox";
-                wrapper.appendChild(initialsEntryBox);
+            initialsEntryBox.maxLength=3;
+                initialsEntryBox.id="entryBox";
+                    wrapper.appendChild(initialsEntryBox);
     // create 'Submit' button
         let createButton = document.createElement("button");
             createButton.className="buttonSubmitClass";
