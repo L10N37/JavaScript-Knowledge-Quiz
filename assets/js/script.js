@@ -282,47 +282,25 @@ let tempAnswerStorage = {};
         answersVarParent.className= "listenTarget";
             answersVarParent.id="createDestroy"
                 document.body.appendChild(answersVarParent);
-    // children
-    //1
-    let answersVar0= document.createElement("div");
-        answersVar0.className= "answersClass";
-            answersVar0.id="answersID0";
-                answersVarParent.appendChild(answersVar0);
-    //2
-    let answersVar1= document.createElement("div");
-        answersVar1.className= "answersClass";
-            answersVar1.id="answersID1";
-                answersVarParent.appendChild(answersVar1);
-    //3
-    let answersVar2= document.createElement("div");
-        answersVar2.className= "answersClass";
-            answersVar2.id="answersID2";
-                answersVarParent.appendChild(answersVar2);
-    //4
-    let answersVar3= document.createElement("div");
-        answersVar3.className= "answersClass";
-            answersVar3.id="answersID3";
-                answersVarParent.appendChild(answersVar3);
+    // children * 4
+    let answersVar = [];
+    let answersIDVar=["answersID0","answersID1","answersID2","answersID3"]
+    for (let i = 0; i < 4; i++) {
+    answersVar[i]= document.createElement("div");
+        answersVar[i].className= "answersClass";
+            answersVar[i].id=answersIDVar[i];
+                answersVarParent.appendChild(answersVar[i]);            
+    }
     // Inner HTML generated randomly above, this section adjusts the ID of the div containing
     // the correct answer, to an ID used to ID the correct answer with the click event.
-    answersVar0.innerHTML = AnswersJumbled[0];
-        answersVar1.innerHTML = AnswersJumbled[1];
-            answersVar2.innerHTML = AnswersJumbled[2];
-                answersVar3.innerHTML = AnswersJumbled[3];
-
-    if (AnswersJumbled[0] == questions[index].correctAnswer) {
-    answersVar0.id="correctAnswerID";
+    for (let i = 0; i < 4; i++) {
+        answersVar[i].innerHTML = AnswersJumbled[i];                                            //[x]
+    }
+    for (let i = 0; i < 4; i++) {
+        if (AnswersJumbled[i]==questions[index].correctAnswer){
+            answersVar[i].id="correctAnswerID";
         }
-    else if (AnswersJumbled[1] == questions[index].correctAnswer) {
-    answersVar1.id="correctAnswerID";
-        }
-    else if (AnswersJumbled[2] == questions[index].correctAnswer) {
-    answersVar2.id="correctAnswerID";
-        }
-    else if (AnswersJumbled[3] == questions[index].correctAnswer) {
-    answersVar3.id="correctAnswerID";
-        }
-
+    }
         // Add our click event listener for clickable answers
         let clickableAnswers = document.querySelector(".listenTarget");
         clickableAnswers.addEventListener("click", function(event) {
