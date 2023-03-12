@@ -9,7 +9,7 @@ The questions are the first 10 questions from the w3school JS quiz at https://ww
 <br />
 The quiz was created for the Monash fullstack bootcamps week 4 assignment challenge and we were certainly thrown in the deep end with this one!<br />
 <br />
-The application is mobile responsive, it displays well across many mobile and tablet resolutions in landscape and portrait mode. The start button was originally placed on the top left, but moved for aesthetic purposes. This was a trade off as the button placement won't be perfect on a very small quantity of mobile screen resolutions, though on 95% of devices - it's a large aesthetic imporovement and it doesn't impede functionality on the devices where the button placement isn't quite right.
+The application is mobile responsive, it displays well across many mobile and tablet resolutions in landscape and portrait mode. The start button was originally placed on the top left, but moved for aesthetic purposes. This was a trade off as the button placement won't be perfect on a very small quantity of mobile screen resolutions, though on 95% of devices - it's a large aesthetic improvement and it doesn't impede functionality on the devices where the button placement isn't quite right.
 <br />
 
 ## Usage
