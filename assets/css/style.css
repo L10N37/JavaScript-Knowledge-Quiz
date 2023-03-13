@@ -36,7 +36,7 @@ font-size: 100%;
 transition: 1s;
 }
 
-.highLight{
+highLight{
 color:rgb(219, 8, 194);
 font-weight: bolder;
 font-style: italic;

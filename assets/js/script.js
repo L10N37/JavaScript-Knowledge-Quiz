@@ -9,12 +9,7 @@ document.body.appendChild(introScreen);
 introScreen.innerHTML = "Try to answer the following questions about JavaScript \
 programming within the time limit. There are 10 questions. \
 If you can answer correctly within an average of 7 seconds a question, \
-you will make it through!"
-// Highlighted text in Intro Screen (separate style)
-let introScreenAlt= document.createElement("div");
-introScreenAlt.className= "highLight"
-introScreen.appendChild(introScreenAlt);
-introScreenAlt.innerHTML = "\ You will be penalised 10 seconds for an incorrect answer!";
+you will make it through! <highlight><br>You will be penalised 10 seconds for an incorrect answer! </highlight>"
 
     // add click event to 'I'm Ready' button
     let playButton = document.getElementById("imReady");
@@ -30,19 +25,19 @@ function removeIntro(){
         deleteIntro.parentNode.removeChild(deleteIntro);
             deleteIntro = document.getElementById('imReady');
                 deleteIntro.parentNode.removeChild(deleteIntro);
-}
+        }
 
 function clearScreen(){
     let remove = document.getElementById('createDestroy');
         remove.parentNode.removeChild(remove);
             remove = document.getElementById('questionsID');
                 remove.parentNode.removeChild(remove);
-}
+        }
 
 function score(correctAnswerPoints, timeLeftPoints) {
     console.log("Correct Answers: " + correctAnswerPoints + " Time Left: " + timeLeftPoints)
     // remove correct / incorrect text from last attempt
-  removeAnsweredText();
+    removeAnsweredText();
     // create parent wrapper (for easy removal of all elements)
         let wrapper = document.createElement("div");
             wrapper.id="wrapper";
@@ -110,20 +105,6 @@ function score(correctAnswerPoints, timeLeftPoints) {
                                                     else if (timesPlayed==5) {
                                                         localStorage.setItem("initials5", JSON.stringify(value));
                                                         }
-                                                         
-
-        //          check score status in console log               //                                                 
-        let checkCurrentScoreStatus = localStorage.getItem("initials1");
-        console.log(checkCurrentScoreStatus);
-        checkCurrentScoreStatus = localStorage.getItem("initials2");
-        console.log(checkCurrentScoreStatus);
-        checkCurrentScoreStatus = localStorage.getItem("initials3");
-        console.log(checkCurrentScoreStatus);
-        checkCurrentScoreStatus = localStorage.getItem("initials4");
-        console.log(checkCurrentScoreStatus);
-        checkCurrentScoreStatus = localStorage.getItem("initials5");
-        console.log(checkCurrentScoreStatus);
-        //                                                         //
     })
     
         // add click event to 'Play Again' button
@@ -267,8 +248,8 @@ let tempAnswerStorage = {};
                     randomAnswer1to4[i] = questions[index].answers[randomIndex];
                     //store the random answer here temporarily before we slice it out
                         tempAnswerStorage[i] = questions[index].answers[randomIndex];
-            // slice the answer out of the array, slice method sets new array length 
-            // so we can't generate the same answer multiple times
+                             // slice the answer out of the array, slice method sets new array length 
+                            // so we can't generate the same answer multiple times
                             let tempAnswerStored = questions[index].answers.randomIndex;
                                 questions[index].answers.splice(randomIndex, 1);
                                     AnswersJumbled[i] =  randomAnswer1to4[i];
