@@ -1,6 +1,14 @@
 let timeStart= 70;
 let index= 0;
-let timesPlayed=1;
+let timesPlayed;
+
+if (localStorage.getItem("initials1")==null) timesPlayed=1;
+else if (localStorage.getItem("initials2")==null) timesPlayed=2;
+else if (localStorage.getItem("initials3")==null) timesPlayed=3;
+else if (localStorage.getItem("initials4")==null) timesPlayed=4;
+else if (localStorage.getItem("initials5")==null) timesPlayed=5;
+else timesPlayed=1;
+
 // Insert Intro Screen
 let introScreen= document.createElement("div");
 introScreen.className= "intro"
